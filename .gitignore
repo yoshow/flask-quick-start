@@ -1,0 +1,10 @@
+.idea
+*.iml
+.vscode
+
+instance
+
+*.db
+*.pyc
+*.log
+

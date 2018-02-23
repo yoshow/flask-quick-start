@@ -1,0 +1,10 @@
+flask
+flask-cas
+flask-restful
+flask-cors
+flask-mail
+flask-sqlalchemy
+passlib
+requests
+pyjwt
+SQLAlchemy
