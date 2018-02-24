@@ -7,6 +7,7 @@ from app_logging import logger
 from flask import Response, json, request
 from flask_restful import Resource, reqparse
 from ..services.account_service import AccountService as service
+from ...util.sqlalchemy_helper import entity_to_dict
 
 
 requestParser = reqparse.RequestParser()
@@ -30,7 +31,7 @@ requestParser.add_argument('locking')
 requestParser.add_argument('orderId', type=unicode)
 requestParser.add_argument('status')
 requestParser.add_argument('remark', type=unicode)
-requestParser.add_argument('iP', type=unicode)
+requestParser.add_argument('ip', type=unicode)
 requestParser.add_argument('loginDate')
 requestParser.add_argument('distinguishedName', type=unicode)
 requestParser.add_argument('modifiedDate')
@@ -51,7 +52,7 @@ class AccountAPI(Resource):
 
         logger.info(self.name + ', method:GET')
         code, message, data = self.service.findOne(id)
-        self.res.data = json.dumps({'code': code, 'message': message, 'data': data.to_dict()}, ensure_ascii=False)
+        self.res.data = json.dumps({'code': code, 'message': message, 'data': entity_to_dict(data)}, ensure_ascii=False)
 
         return self.res
 

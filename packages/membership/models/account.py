@@ -1,5 +1,6 @@
 # -*- coding:utf8 -*-
 # !/usr/bin/python
+import time
 from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
@@ -49,7 +50,7 @@ class Account(db.Model):
     """ 备注信息 """
     remark = db.Column(db.String(200), nullable=True)
     """ 最近一次登陆的 IP 地址 """
-    iP = db.Column(db.String(20), nullable=True)
+    ip = db.Column(db.String(20), nullable=True)
     """ 最近一次登陆时间 """
     loginDate = db.Column(db.DateTime, nullable=True)
     """ LDAP 唯一识别名称 """
@@ -68,7 +69,7 @@ class Account(db.Model):
                 if value is None:
                     value = 0
                 else:
-                    value = int(value)
+                    value = time.mktime(value.timetuple()) * 1000
                 result[column.name] = value
             else:
                 result[column.name] = getattr(self, column.name)
