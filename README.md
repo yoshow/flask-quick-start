@@ -4,6 +4,7 @@
 设置配置文件
 
 ```
+mkdir instance
 cp config.py instance/config.py
 ```
 

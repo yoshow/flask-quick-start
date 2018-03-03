@@ -11,6 +11,7 @@ import requests
 
 from packages.membership.models.account import db
 from packages.membership.apis.account_api import AccountAPI
+from packages.membership.apis.role_api import RoleAPI
 
 
 app = Flask(__name__, static_url_path='', instance_relative_config=True)
@@ -44,6 +45,9 @@ api.add_resource(AccountAPI,
     '/api/membership/account',
     '/api/membership/account/<string:id>')
 
+api.add_resource(RoleAPI, 
+    '/api/membership/role',
+    '/api/membership/role/<string:id>')
 
 if __name__ == '__main__':
     host = app.config.get('APP_HOST', '127.0.0.1')
