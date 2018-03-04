@@ -1,4 +1,5 @@
 flask
+flask_httpauth
 flask-cas
 flask-restful
 flask-cors

@@ -49,6 +49,9 @@ api.add_resource(RoleAPI,
     '/api/membership/role',
     '/api/membership/role/<string:id>')
 
+from .app.applications import blueprint as api_blueprint
+app.register_blueprint(api_blueprint, url_prefix='/api/v1')
+
 if __name__ == '__main__':
     host = app.config.get('APP_HOST', '127.0.0.1')
     port = app.config.get('APP_PORT', 10000)
